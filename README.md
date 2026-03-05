@@ -17,7 +17,7 @@ A personal space mission tracker and sky-watching journal. Browse real-time rock
 
 | Package        | Purpose                                              |
 | -------------- | ---------------------------------------------------- |
-| `react-router` | Client-side routing (BrowserRouter, Routes, NavLink) |
+| `react-router-dom` | Client-side routing (BrowserRouter, Routes, NavLink) |
 
 No libraries that directly manipulate the DOM are used in this project.
 
