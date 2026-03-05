@@ -1,0 +1,22 @@
+.log-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.log-empty {
+  padding: var(--space-2xl);
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.log-empty-title {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.log-empty-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}

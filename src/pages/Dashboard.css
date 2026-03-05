@@ -1,0 +1,163 @@
+.dashboard {
+  padding-top: var(--space-xl);
+}
+
+.apod-hero {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+  border: 1px solid var(--border);
+}
+
+.apod-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apod-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.apod-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-xl);
+  background: linear-gradient(transparent, rgba(4, 6, 15, 0.95));
+}
+
+.apod-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.apod-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.apod-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: var(--space-lg);
+}
+
+.card-heading {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.iss-coords {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.coord-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.coord-value {
+  font-size: 1.4rem;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.crew-count {
+  font-size: 2rem;
+  color: var(--accent-secondary);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+.crew-count span {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.crew-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.crew-member {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.crew-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  flex-shrink: 0;
+}
+
+.apod-explanation-card {
+  grid-column: span 1;
+}
+
+.apod-explanation {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.apod-credit {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .apod-explanation-card {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .apod-explanation-card {
+    grid-column: span 1;
+  }
+  .apod-hero {
+    height: 300px;
+  }
+}
