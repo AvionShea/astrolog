@@ -12,33 +12,49 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    let cancelled = false;
+  // Initial load — fetches APOD and astronauts once
+useEffect(() => {
+  let cancelled = false;
 
-    async function loadDashboard() {
-      try {
-        setLoading(true);
-        setError(null);
-        const [apodData, issData, astroData] = await Promise.all([
-          fetchAPOD(),
-          fetchISSLocation(),
-          fetchAstronauts(),
-        ]);
-        if (!cancelled) {
-          setApod(apodData);
-          setIss(issData);
-          setAstronauts(astroData.people || []);
-        }
-      } catch (err) {
-        if (!cancelled) setError(err.message);
-      } finally {
-        if (!cancelled) setLoading(false);
+  async function loadDashboard() {
+    try {
+      setLoading(true);
+      setError(null);
+      const [apodData, astroData] = await Promise.all([
+        fetchAPOD(),
+        fetchAstronauts(),
+      ]);
+      if (!cancelled) {
+        setApod(apodData);
+        setAstronauts(astroData.people || []);
       }
+    } catch (err) {
+      if (!cancelled) setError(err.message);
+    } finally {
+      if (!cancelled) setLoading(false);
     }
+  }
 
-    loadDashboard();
-    return () => { cancelled = true; };
-  }, []);
+  loadDashboard();
+  return () => { cancelled = true; };
+}, []);
+
+// ISS polling — updates every 5 seconds, cleanup clears the interval
+useEffect(() => {
+  async function updateISS() {
+    try {
+      const issData = await fetchISSLocation();
+      setIss(issData);
+    } catch {
+      // silently fail on polling errors — don't disrupt the whole page
+    }
+  }
+
+  updateISS();
+  const interval = setInterval(updateISS, 5000);
+
+  return () => clearInterval(interval);
+}, []);
 
   if (loading) return <LoadingSpinner message="Syncing with mission control..." />;
   if (error) return <ErrorMessage message={error} />;
