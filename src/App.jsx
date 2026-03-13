@@ -3,7 +3,7 @@ import Nav from "./shared/Nav";
 import Dashboard from "./pages/Dashboard";
 import Launches from "./pages/Launches";
 import ObservationLog from "./pages/ObservationLog";
-import Watchlist from "./pages/Watchlist";
+import Watchlist from "./pages/WatchList";
 import NotFound from "./pages/NotFound";
 import "./App.css";
 
